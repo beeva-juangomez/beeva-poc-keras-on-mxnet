@@ -31,22 +31,14 @@ mnist_dataset = datasets.fetch_mldata("MNIST Original")
 
 start_time = time.time()
 
-# reshape the MNIST dataset from a flat list of 784-dim vectors, to
-# 28 x 28 pixel images, then scale the data to the range [0, 1.0]
-# and construct the training and testing splits
 data = mnist_dataset.data.reshape((mnist_dataset.data.shape[0], 28, 28))
 data = data[:, np.newaxis, :, :]
 (trainData, testData, trainLabels, testLabels) = train_test_split(
     data / 255.0, mnist_dataset.target.astype("int"), test_size=0.33)
 
-# transform the training and testing labels into vectors in the
-# range [0, classes] -- this generates a vector for each label,
-# where the index of the label is set to `1` and all other entries
-# to `0`; in the case of MNIST, there are 10 class labels
 trainLabels = np_utils.to_categorical(trainLabels, 10)
 testLabels = np_utils.to_categorical(testLabels, 10)
 
-# initialize the optimizer and model
 print("[INFO] compiling model...")
 opt = SGD(lr=0.01)
 model = LeNet.build(width=28, height=28, depth=1, classes=10,
@@ -84,7 +76,6 @@ if args["load_model"] < 0:
     file_results.write(str(batch_size) + "," + str(epochs) + "," + str(loss) + "," + str(accuracy) + "," + str(time_elapsed))
     file_results.close()
 
-# check to see if the model should be saved to file
 if args["save_model"] > 0:
     print("[INFO] dumping weights to file...")
     model.save_weights(args["weights"], overwrite=True)
