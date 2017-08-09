@@ -1,4 +1,4 @@
-# Keras on MXNEt
+# Keras on MXNet
 
 ### Motivation
 
