@@ -8,7 +8,7 @@ from keras.layers.core import Dense
 
 class LeNet:
     @staticmethod
-    def build(width, height, depth, classes, weightsPath=None):
+    def build(width, height, depth, classes):
         model = Sequential()
         model.add(Convolution2D(20, 5, 5, border_mode="same",
                                 input_shape=(depth, height, width)))
@@ -23,6 +23,4 @@ class LeNet:
         model.add(Dense(classes))
         model.add(Activation("softmax"))
 
-        if weightsPath is not None:
-            model.load_weights(weightsPath)
         return model

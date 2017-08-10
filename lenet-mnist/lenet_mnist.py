@@ -2,6 +2,10 @@ import argparse
 import time
 
 import numpy as np
+import matplotlib
+
+matplotlib.use('agg')
+import matplotlib.pyplot as plt
 from keras.optimizers import SGD
 from keras.utils import np_utils
 from sklearn import datasets
@@ -9,18 +13,12 @@ from sklearn.cross_validation import train_test_split
 from cnn.networks.lenet import LeNet
 
 batch_size = 128
-epochs = 20
+epochs = 1
 
 ap = argparse.ArgumentParser()
-ap.add_argument("-s", "--save-model", type=int, default=-1,
-                help="(optional) whether or not model should be saved to disk")
-ap.add_argument("-l", "--load-model", type=int, default=-1,
-                help="(optional) whether or not pre-trained model should be loaded")
-ap.add_argument("-w", "--weights", type=str,
-                help="(optional) path to weights file")
-ap.add_argument("-b", "--batch-size", type=int, default=128,
+ap.add_argument("-b", "--batch-size", type=int, default=batch_size,
                 help="(optional) batch size")
-ap.add_argument("-e", "--epochs", type=int, default=20,
+ap.add_argument("-e", "--epochs", type=int, default=epochs,
                 help="(optional) number of epochs")
 ap.add_argument("-g", "--gpu", type=int, default=-1,
                 help="(optional) whether or not model should run on GPU")
@@ -41,8 +39,7 @@ testLabels = np_utils.to_categorical(testLabels, 10)
 
 print("[INFO] compiling model...")
 opt = SGD(lr=0.01)
-model = LeNet.build(width=28, height=28, depth=1, classes=10,
-                    weightsPath=args["weights"] if args["load_model"] > 0 else None)
+model = LeNet.build(width=28, height=28, depth=1, classes=10)
 
 if args["gpu"] > 0:
     gpus = ["gpu(" + str(index) + ")" for index in range(args["gpu"])]
@@ -58,26 +55,20 @@ if args["batch_size"] > 0:
 if args["epochs"] > 0:
     epochs = args["epochs"]
 
-if args["load_model"] < 0:
-    print("[INFO] training...")
-    model.fit(trainData, trainLabels, batch_size=batch_size, nb_epoch=epochs,
-              verbose=1)
+print("[INFO] training...")
+history = model.fit(trainData, trainLabels, batch_size=batch_size, nb_epoch=epochs,
+                    verbose=1, validation_data=(testData, testLabels))
 
-    # show the accuracy on the testing set
-    print("[INFO] evaluating...")
-    (loss, accuracy) = model.evaluate(testData, testLabels,
-                                      batch_size=batch_size, verbose=1)
-    print("[INFO] accuracy: {:.2f}%".format(accuracy * 100))
+accuracy = history.history['acc'][-1]
+loss = history.history['loss'][-1]
 
-    end_time = time.time()
-    time_elapsed = end_time - start_time
-    print("[INFO] time: {:.2f}".format(time_elapsed))
+print("[INFO] accuracy: {:.2f}%".format(accuracy * 100))
 
-    file_results = open("./output/results.txt", "a")
-    file_results.write(
-        str(batch_size) + "," + str(epochs) + "," + str(loss) + "," + str(accuracy) + "," + str(time_elapsed) + "\n")
-    file_results.close()
+end_time = time.time()
+time_elapsed = end_time - start_time
+print("[INFO] time: {:.2f}".format(time_elapsed))
 
-if args["save_model"] > 0:
-    print("[INFO] dumping weights to file...")
-    model.save_weights(args["weights"], overwrite=True)
+file_results = open("./output/results.txt", "a")
+file_results.write(
+    str(batch_size) + "," + str(epochs) + "," + str(loss) + "," + str(accuracy) + "," + str(time_elapsed) + "\n")
+file_results.close()
