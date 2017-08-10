@@ -45,8 +45,9 @@ model = LeNet.build(width=28, height=28, depth=1, classes=10,
                     weightsPath=args["weights"] if args["load_model"] > 0 else None)
 
 if args["gpu"] > 0:
+    gpus = ["gpu(" + str(index) + ")" for index in range(args["gpu"])]
     model.compile(loss="categorical_crossentropy", optimizer=opt,
-                  metrics=["accuracy"], context=['gpu(0)'])
+                  metrics=["accuracy"], context=gpus)
 else:
     model.compile(loss="categorical_crossentropy", optimizer=opt,
                   metrics=["accuracy"])
@@ -72,8 +73,9 @@ if args["load_model"] < 0:
     time_elapsed = end_time - start_time
     print("[INFO] time: {:.2f}".format(time_elapsed))
 
-    file_results = open("./output/results_gpu_" + str(batch_size) + "_" + str(epochs) + ".txt", "w")
-    file_results.write(str(batch_size) + "," + str(epochs) + "," + str(loss) + "," + str(accuracy) + "," + str(time_elapsed))
+    file_results = open("./output/results.txt", "a")
+    file_results.write(
+        str(batch_size) + "," + str(epochs) + "," + str(loss) + "," + str(accuracy) + "," + str(time_elapsed) + "\n")
     file_results.close()
 
 if args["save_model"] > 0:

@@ -61,7 +61,7 @@ end_time = time.time()
 time_elapsed = end_time - start_time
 print("[INFO] time: {:.2f}".format(time_elapsed))
 
-file_results = open("./output/results_" + str(batch_size) + "_" + str(epochs) + ".txt", "w")
+file_results = open("./output/results.txt", "a")
 file_results.write(
-    str(batch_size) + "," + str(epochs) + "," + str(loss) + "," + str(accuracy) + "," + str(time_elapsed))
+    str(batch_size) + "," + str(epochs) + "," + str(loss) + "," + str(accuracy) + "," + str(time_elapsed) + "\n")
 file_results.close()
