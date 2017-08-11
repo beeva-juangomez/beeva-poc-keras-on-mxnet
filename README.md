@@ -35,8 +35,8 @@ running on top of TensorFlow, CNTK, or Theano. It was developed with a focus on
 enabling fast experimentation. Being able to go from idea to result with the
 least possible delay is key to doing good research.
 
-The official description of Keras does not include MXNet. Today is not possible
-to use MXNet with Keras officially. However, you can find a [fork](https://github.com/dmlc/keras)
+The official description of Keras does not include MXNet. **Today is not possible
+to use MXNet with Keras officially**. However, you can find a [**fork**](https://github.com/dmlc/keras)
 on GitHub of Keras 1.2.2 supporting it.
 
 ### What is MXNet? <a name="what_is_mxnet"></a>
@@ -49,8 +49,8 @@ and supports a flexible programming model and multiple languages.
 
 You can find two projects:
 
-* lenet-mnist: Contains an implementation of LeNet architecture (CNN) with MNIST.
-* rnn-imdb: Contains an implementation of a RNN with IMDB reviews.
+* **lenet-mnist**: Contains an implementation of LeNet architecture (CNN) with MNIST.
+* **rnn-imdb**: Contains an implementation of a RNN with IMDB reviews.
 
 Moreover, in the project root exists a folder with three bash scripts containing the software needed to run both projects, depending on which hardware you have.
 
