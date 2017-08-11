@@ -20,3 +20,8 @@ python rnn_imdb.py --batch-size 512 --epochs 10 --gpu 8
 python rnn_imdb.py --batch-size 512 --epochs 20 --gpu 8
 python rnn_imdb.py --batch-size 512 --epochs 40 --gpu 8
 python rnn_imdb.py --batch-size 512 --epochs 60 --gpu 8
+python rnn_imdb.py --batch-size 1024 --epochs 5 --gpu 8
+python rnn_imdb.py --batch-size 1024 --epochs 10 --gpu 8
+python rnn_imdb.py --batch-size 1024 --epochs 20 --gpu 8
+python rnn_imdb.py --batch-size 1024 --epochs 40 --gpu 8
+python rnn_imdb.py --batch-size 1024 --epochs 60 --gpu 8
