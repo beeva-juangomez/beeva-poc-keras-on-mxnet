@@ -52,7 +52,7 @@ You can find two projects:
 * **lenet-mnist**: Contains an implementation of LeNet architecture (CNN) with MNIST.
 * **rnn-imdb**: Contains an implementation of a RNN with IMDB reviews.
 
-Moreover, in the project root exists a folder with three bash scripts containing the software needed to run both projects, depending on which hardware you have.
+Moreover, in the project root exists the 'requirement' folder with three bash scripts containing the software needed to run both projects, depending on which hardware you have.
 
 Inside both lenet-mnist and rnn-imdb projects you can find scripts that run the neural networks n times with different batch sizes and epochs.
 
@@ -66,6 +66,16 @@ AWS EC2 instances:
 
 
 ### Result <a name="result"></a>
+
+The output is located inside 'output' folder. It contains a txt file with the following fields comma-separated:
+
+* Batch size
+* Epochs
+* Loss
+* Accuracy
+* Time (seconds)
+
+The final results have been moved to 'result' folder where you can find 'cpu', 'gpu' and 'multigpu' folders.
 
 #### CNN LeNet MNIST  <a name="result_lenet"></a>
 

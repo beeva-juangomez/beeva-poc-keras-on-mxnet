@@ -7,4 +7,4 @@ bash Anaconda3-4.2.0-Linux-x86_64.sh
 source ~/.bashrc
 
 pip install git+git://github.com/dmlc/keras.git
-pip install mxnet-cu75
+pip install mxnet
