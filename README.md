@@ -67,4 +67,20 @@ AWS EC2 instances:
 
 ### Result <a name="result"></a>
 
+#### CNN LeNet MNIST  <a name="result_lenet"></a>
+
+* CPU: It is possible to execute the whole script. However, the time needed to complete the executions is higher than GPU.
+
+* GPU:
+
+* Multi-GPU:
+
+#### RNN IMDB reviews <a name="result_rnn_imdb"></a>
+
+* CPU: It is not possible to run the RNN over CPU. Even with very low epochs the CPU can not finish the execution in a reasonable time.
+
+* GPU: Despite the complexity of this kind of RNN, one GPU can execute it but the time needed to complete the whole script is much higher than CNN LeNet.
+
+* Multi-GPU:
+
 ### Conclusion <a name="conclusion"></a>
