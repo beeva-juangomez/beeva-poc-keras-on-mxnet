@@ -9,6 +9,7 @@
 6. [Project structure](#project_structure)
 7. [Hardware](#hardware)
 8. [Result](#result)
+9. [Conclusion](#conclusion)
 
 ### Topic <a name="topic"></a>
 
@@ -16,7 +17,7 @@ To use MXNet as a backend with Keras
 
 ### Goal <a name="goal"></a>
 
-To generate results and conclusions that describe the use of MXNet as a backend with Keras in the following cases:
+Generate results and conclusions that describe the use of MXNet as a backend with Keras in the following cases:
 
 * CPU
 * GPU
@@ -65,3 +66,5 @@ AWS EC2 instances:
 
 
 ### Result <a name="result"></a>
+
+### Conclusion <a name="conclusion"></a>
