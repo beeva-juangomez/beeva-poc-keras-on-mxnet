@@ -80,17 +80,22 @@ The final results have been moved to 'result' folder where you can find 'cpu', '
 #### CNN LeNet MNIST  <a name="result_lenet"></a>
 
 * CPU: It is possible to execute the whole script. However, the time needed to complete the executions is higher than GPU.
+![alt tag](assets/lenet_cpu.png)
 
 * GPU:
+![alt tag](assets/lenet_gpu.png)
 
 * Multi-GPU:
+![alt tag](assets/lenet_multigpu.png)
 
 #### RNN IMDB reviews <a name="result_rnn_imdb"></a>
 
 * CPU: It is not possible to run the RNN over CPU. Even with very low epochs the CPU can not finish the execution in a reasonable time.
 
 * GPU: Despite the complexity of this kind of RNN, one GPU can execute it but the time needed to complete the whole script is much higher than CNN LeNet.
+![alt tag](assets/rnn_gpu.png)
 
 * Multi-GPU:
+![alt tag](assets/rnn_multigpu.png)
 
 ### Conclusion <a name="conclusion"></a>
