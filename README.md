@@ -9,6 +9,9 @@
 6. [Project structure](#project_structure)
 7. [Hardware](#hardware)
 8. [Result](#result)
+  1. [CNN LeNet MNIST](#result_lenet)
+  2. [RNN IMDB reviews](#result_rnn_imdb)
+9. [Conclusion](#conclusion)
 
 ### Topic <a name="topic"></a>
 
@@ -98,6 +101,10 @@ The final results have been moved to 'result' folder where you can find 'cpu', '
 
 ![alt tag](assets/rnn_gpu.png)
 
-- **Multi-GPU:** As you can see, the multi-GPU execution is very similar to GPU. The parallelization have sense if the amount of epochs is very high. 
+- **Multi-GPU:** As you can see, the multi-GPU execution is very similar to GPU. The parallelization have sense if the amount of epochs is very high.
 
 ![alt tag](assets/rnn_multigpu.png)
+
+### Conclusion <a name="conclusion"></a>
+
+Nowadays, Keras is not ready to support MXNet for professional development. This has nothing to do with the performance. The models run perfectly and is completely functional, but the current solution (forked repository) is not enough to long-term development because you will not enjoy the fixes and new features added in next Keras version, you have to stick in 1.2.2 if you want to use Keras on MXNet.
