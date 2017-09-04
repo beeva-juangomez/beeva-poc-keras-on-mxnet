@@ -1,5 +1,6 @@
 import argparse
 import time
+import numpy as np
 
 from rnn.networks.rnn import IMDB
 from keras.datasets import imdb
@@ -20,13 +21,19 @@ ap.add_argument("-g", "--gpu", type=int, default=-1,
                 help="(optional) whether or not model should run on GPU")
 args = vars(ap.parse_args())
 
-print("[INFO] downloading IMDB...")
 (X_train, y_train), (X_test, y_test) = imdb.load_data(nb_words=top_words)
 
-start_time = time.time()
+X_test_splitted = np.split(X_train, 2)
+y_test_splitted = np.split(y_test, 2)
+X_train = np.concatenate([X_train, X_test_splitted[0]], axis=0)
+y_train = np.concatenate([y_train, y_test_splitted[0]])
+X_test = X_test_splitted[1]
+y_test = y_test_splitted[1]
 
 X_train = sequence.pad_sequences(X_train, maxlen=max_review_length)
 X_test = sequence.pad_sequences(X_test, maxlen=max_review_length)
+
+startTime = time.time()
 
 print("[INFO] compiling model...")
 model = IMDB.build(top_words, embedding_vector_length, max_review_length)
@@ -43,7 +50,6 @@ if args["gpu"] > 0:
                   context=gpus)
 else:
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-
 
 print("[INFO] training...")
 history = model.fit(X_train, y_train, batch_size=batch_size, nb_epoch=epochs,

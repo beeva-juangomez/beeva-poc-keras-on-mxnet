@@ -28,7 +28,6 @@ Generate results and conclusions that describe the use of MXNet as a backend wit
 ### Scenarios <a name="scenarios"></a>
 
 * Convolutional NN with LeNet and MNIST
-* Recurrent NN with IMDB reviews
 
 ### What is Keras? <a name="what_is_keras"></a>
 
@@ -63,9 +62,7 @@ Inside both lenet-mnist and rnn-imdb projects you can find scripts that run the 
 AWS EC2 instances:
 
 * c4.xlarge (CPU)
-* p2.xlarge (GPU)
-* p2.8xlarge (Multi-GPU)
-
+* p2.8xlarge (GPU and Multi-GPU)
 
 ### Result <a name="result"></a>
 
@@ -78,6 +75,91 @@ The output is located inside 'output' folder. It contains a txt file with the fo
 * Time (seconds)
 
 The final results have been moved to 'result' folder where you can find 'cpu', 'gpu' and 'multigpu' folders.
+
+| infrastructure | model | script | batch size | gpus | Accuracy (validation) | Epochs | Training time (s/epoch)
+| --- | --- | --- | --- | --- | --- | --- | ---
+| 1 | lenet | keras_mxnet_lenet | 64 | 0 | 0.991 | 12 | 255.7 (235 samples/s) 
+| 1 | lenet | keras_mxnet_lenet | 128 | 0 | 0.988 | 12 | 263.2 (228 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 256 | 0 | 0.987 | 12 | 232.4 (258 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 512 | 0 | 0.986 | 12 | 212.4 (283 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 64 | 1 | 0.982 | 12 | 5.9 (10203 samples/s) 
+| 1 | lenet | keras_mxnet_lenet | 128 | 1 | 0.980 | 12 | 4.9 (12285 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 256 | 1 | 0.956 | 12 | 3.9 (15435 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 512 | 1 | 0.959 | 12 | 3.6 (16721 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 1024 | 1 | 0.929 | 12 | 3.3 (18242 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 2048 | 1 | 0.890 | 12 | 3.2 (18812 samples/s) 
+| 1 | lenet | keras_mxnet_lenet | 4096 | 1 | 0.842 | 12 | 3.2 (18812 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 64 | 4 | 0.991 | 12 | 3.1 (43.7-6)/12 (19200 samples/s) 
+| 1 | lenet | keras_mxnet_lenet | 128 | 4 | 0.992 | 12 | 2.4 (35.5-6)/12 (25500 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 256 | 4 | 0.992 | 12 | 2.3 (35.2-6)/12 (26500 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 512 | 4 | 0.991 | 12 | 2.9 (44.4-6)/12 (20500 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 1024 | 4 | 0.992 | 12 | 5.7 (85.0-6)/12 (10500 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 2048 | 4 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+| 1 | lenet | keras_mxnet_lenet | 4096 | 4 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s)  
+| 1 | lenet | keras_mxnet_lenet | 64 | 8 | 0.991 | 12 | 3.1 (43.7-6)/12 (19200 samples/s) 
+| 1 | lenet | keras_mxnet_lenet | 128 | 8 | 0.992 | 12 | 2.4 (35.5-6)/12 (25500 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 256 | 8 | 0.992 | 12 | 2.3 (35.2-6)/12 (26500 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 512 | 8 | 0.991 | 12 | 2.9 (44.4-6)/12 (20500 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 1024 | 8 | 0.992 | 12 | 5.7 (85.0-6)/12 (10500 samples/s)
+| 1 | lenet | keras_mxnet_lenet | 2048 | 8 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+| 1 | lenet | keras_mxnet_lenet | 4096 | 8 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+| 1 | lenet | keras_mxnet_lenet_optimized | 64 | 0 | 0.991 | 12 | 3.1 (43.7-6)/12 (19200 samples/s) 
+| 1 | lenet | keras_mxnet_lenet_optimized | 128 | 0 | 0.992 | 12 | 2.4 (35.5-6)/12 (25500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 256 | 0 | 0.992 | 12 | 2.3 (35.2-6)/12 (26500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 512 | 0 | 0.991 | 12 | 2.9 (44.4-6)/12 (20500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 1024 | 0 | 0.992 | 12 | 5.7 (85.0-6)/12 (10500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 2048 | 0 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+| 1 | lenet | keras_mxnet_lenet_optimized | 4096 | 0 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+| 1 | lenet | keras_mxnet_lenet_optimized | 64 | 1 | 0.991 | 12 | 3.1 (43.7-6)/12 (19200 samples/s) 
+| 1 | lenet | keras_mxnet_lenet_optimized | 128 | 1 | 0.992 | 12 | 2.4 (35.5-6)/12 (25500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 256 | 1 | 0.992 | 12 | 2.3 (35.2-6)/12 (26500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 512 | 1 | 0.991 | 12 | 2.9 (44.4-6)/12 (20500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 1024 | 1 | 0.992 | 12 | 5.7 (85.0-6)/12 (10500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 2048 | 1 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+| 1 | lenet | keras_mxnet_lenet_optimized | 4096 | 1 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 64 | 4 | 0.991 | 12 | 3.1 (43.7-6)/12 (19200 samples/s) 
+| 1 | lenet | keras_mxnet_lenet_optimized | 128 | 4 | 0.992 | 12 | 2.4 (35.5-6)/12 (25500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 256 | 4 | 0.992 | 12 | 2.3 (35.2-6)/12 (26500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 512 | 4 | 0.991 | 12 | 2.9 (44.4-6)/12 (20500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 1024 | 4 | 0.992 | 12 | 5.7 (85.0-6)/12 (10500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 2048 | 4 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+| 1 | lenet | keras_mxnet_lenet_optimized | 4096 | 4 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s)  
+| 1 | lenet | keras_mxnet_lenet_optimized | 64 | 8 | 0.991 | 12 | 3.1 (43.7-6)/12 (19200 samples/s) 
+| 1 | lenet | keras_mxnet_lenet_optimized | 128 | 8 | 0.992 | 12 | 2.4 (35.5-6)/12 (25500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 256 | 8 | 0.992 | 12 | 2.3 (35.2-6)/12 (26500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 512 | 8 | 0.991 | 12 | 2.9 (44.4-6)/12 (20500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 1024 | 8 | 0.992 | 12 | 5.7 (85.0-6)/12 (10500 samples/s)
+| 1 | lenet | keras_mxnet_lenet_optimized | 2048 | 8 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+| 1 | lenet | keras_mxnet_lenet_optimized | 4096 | 8 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+| 1 | lenet | mxnet_lenet_official_sample | 64 | 0 | 0.991 | 12 | 3.1 (43.7-6)/12 (19200 samples/s) 
+| 1 | lenet | mxnet_lenet_official_sample | 128 | 0 | 0.992 | 12 | 2.4 (35.5-6)/12 (25500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 256 | 0 | 0.992 | 12 | 2.3 (35.2-6)/12 (26500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 512 | 0 | 0.991 | 12 | 2.9 (44.4-6)/12 (20500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 1024 | 0 | 0.992 | 12 | 5.7 (85.0-6)/12 (10500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 2048 | 0 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+| 1 | lenet | mxnet_lenet_official_sample | 4096 | 0 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+| 1 | lenet | mxnet_lenet_official_sample | 64 | 1 | 0.991 | 12 | 3.1 (43.7-6)/12 (19200 samples/s) 
+| 1 | lenet | mxnet_lenet_official_sample | 128 | 1 | 0.992 | 12 | 2.4 (35.5-6)/12 (25500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 256 | 1 | 0.992 | 12 | 2.3 (35.2-6)/12 (26500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 512 | 1 | 0.991 | 12 | 2.9 (44.4-6)/12 (20500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 1024 | 1 | 0.992 | 12 | 5.7 (85.0-6)/12 (10500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 2048 | 1 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+| 1 | lenet | mxnet_lenet_official_sample | 4096 | 1 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 64 | 4 | 0.991 | 12 | 3.1 (43.7-6)/12 (19200 samples/s) 
+| 1 | lenet | mxnet_lenet_official_sample | 128 | 4 | 0.992 | 12 | 2.4 (35.5-6)/12 (25500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 256 | 4 | 0.992 | 12 | 2.3 (35.2-6)/12 (26500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 512 | 4 | 0.991 | 12 | 2.9 (44.4-6)/12 (20500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 1024 | 4 | 0.992 | 12 | 5.7 (85.0-6)/12 (10500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 2048 | 4 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+| 1 | lenet | mxnet_lenet_official_sample | 4096 | 4 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s)  
+| 1 | lenet | mxnet_lenet_official_sample | 64 | 8 | 0.991 | 12 | 3.1 (43.7-6)/12 (19200 samples/s) 
+| 1 | lenet | mxnet_lenet_official_sample | 128 | 8 | 0.992 | 12 | 2.4 (35.5-6)/12 (25500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 256 | 8 | 0.992 | 12 | 2.3 (35.2-6)/12 (26500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 512 | 8 | 0.991 | 12 | 2.9 (44.4-6)/12 (20500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 1024 | 8 | 0.992 | 12 | 5.7 (85.0-6)/12 (10500 samples/s)
+| 1 | lenet | mxnet_lenet_official_sample | 2048 | 8 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+| 1 | lenet | mxnet_lenet_official_sample | 4096 | 8 | 0.991 | 12 | 2.4 (34.1-6)/12 (25000 samples/s) 
+
 
 #### CNN LeNet MNIST  <a name="result_lenet"></a>
 
@@ -93,13 +175,6 @@ The final results have been moved to 'result' folder where you can find 'cpu', '
 
 ![alt tag](assets/lenet_multigpu.png)
 
-#### RNN IMDB reviews <a name="result_rnn_imdb"></a>
-
-- **CPU:** It is not possible to run the RNN over CPU. Even with very low epochs the CPU can not finish the execution in a reasonable time.
-
-- **GPU:** Despite the complexity of this kind of RNN, one GPU can execute it but the time needed to complete the whole script is much higher than CNN LeNet.
-
-![alt tag](assets/rnn_gpu.png)
 
 - **Multi-GPU:** As you can see, the multi-GPU execution is very similar to GPU. The parallelization have sense if the amount of epochs is very high.
 
@@ -107,4 +182,4 @@ The final results have been moved to 'result' folder where you can find 'cpu', '
 
 ### Conclusion <a name="conclusion"></a>
 
-Nowadays, Keras is not ready to support MXNet for professional development. This has nothing to do with the performance. The models run perfectly and is completely functional, but the current solution (forked repository) is not enough to long-term development because you will not enjoy the fixes and new features added in next Keras version, you have to stick in 1.2.2 if you want to use Keras on MXNet.
+Nowadays, Keras is not ready to support MXNet for professional development. This has nothing to do with the performance. The models run perfectly and is completely functional, but the current solution (forked repository) is not enough to long-term development because you will not enjoy the fixes and new features added in next Keras versions, you have to stick in 1.2.2 if you want to use Keras on MXNet.

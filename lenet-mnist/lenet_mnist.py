@@ -32,13 +32,13 @@ start_time = time.time()
 data = mnist_dataset.data.reshape((mnist_dataset.data.shape[0], 28, 28))
 data = data[:, np.newaxis, :, :]
 (trainData, testData, trainLabels, testLabels) = train_test_split(
-    data / 255.0, mnist_dataset.target.astype("int"), test_size=0.33)
+    data / 255.0, mnist_dataset.target.astype("int"), test_size=0.14)
 
 trainLabels = np_utils.to_categorical(trainLabels, 10)
 testLabels = np_utils.to_categorical(testLabels, 10)
 
 print("[INFO] compiling model...")
-opt = SGD(lr=0.01)
+opt = SGD(lr=0.05)
 model = LeNet.build(width=28, height=28, depth=1, classes=10)
 
 if args["gpu"] > 0:
@@ -59,16 +59,19 @@ print("[INFO] training...")
 history = model.fit(trainData, trainLabels, batch_size=batch_size, nb_epoch=epochs,
                     verbose=1, validation_data=(testData, testLabels))
 
+val_accuracy = history.history['val_acc'][-1]
+val_loss = history.history['val_loss'][-1]
 accuracy = history.history['acc'][-1]
 loss = history.history['loss'][-1]
 
-print("[INFO] accuracy: {:.2f}%".format(accuracy * 100))
+print("[INFO] accuracy: {:.2f}%".format(val_accuracy * 100))
 
 end_time = time.time()
 time_elapsed = end_time - start_time
 print("[INFO] time: {:.2f}".format(time_elapsed))
 
-file_results = open("./output/results.txt", "a")
+file_results = open("./output/results_" + str(args["gpu"]) + ".txt", "a")
 file_results.write(
-    str(batch_size) + "," + str(epochs) + "," + str(loss) + "," + str(accuracy) + "," + str(time_elapsed) + "\n")
+    str(batch_size) + "," + str(epochs) + "," + str(val_loss) + "," + str(val_accuracy) + "," + str(loss) + "," + str(
+        accuracy) + "," + str(time_elapsed) + "\n")
 file_results.close()
