@@ -42,6 +42,8 @@ opt = SGD(lr=0.05)
 model = LeNet.build(width=28, height=28, depth=1, classes=10)
 
 if args["gpu"] > 0:
+    if args["gpu"] > 4:
+        opt = SGD(lr=0.01)
     gpus = ["gpu(" + str(index) + ")" for index in range(args["gpu"])]
     model.compile(loss="categorical_crossentropy", optimizer=opt,
                   metrics=["accuracy"], context=gpus)
