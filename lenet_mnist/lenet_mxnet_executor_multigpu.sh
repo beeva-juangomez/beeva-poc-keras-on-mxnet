@@ -7,7 +7,3 @@ python example/image-classification/train_mnist.py  --gpus 0,1,2,3,4,5,6,7 --num
 python example/image-classification/train_mnist.py  --gpus 0,1,2,3,4,5,6,7 --num-epochs 12 --network lenet --batch-size 1024 --disp-batches 50 > output/results_all_8_1024_12.txt 2>&1
 python example/image-classification/train_mnist.py  --gpus 0,1,2,3,4,5,6,7 --num-epochs 12 --network lenet --batch-size 2048 --disp-batches 50 > output/results_all_8_2048_12.txt 2>&1
 python example/image-classification/train_mnist.py  --gpus 0,1,2,3,4,5,6,7 --num-epochs 12 --network lenet --batch-size 4096 --disp-batches 50 > output/results_all_8_4096_12.txt 2>&1
-
-git clone --recursive https://github.com/apache/incubator-mxnet.git mxnet --branch 0.11.0
-cd mxnet
-make -j $(nproc) USE_OPENCV=1 USE_BLAS=openblas USE_CUDA=1 USE_CUDA_PATH=/home/ubuntu/cuda USE_CUDNN=1
