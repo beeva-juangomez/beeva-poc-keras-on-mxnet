@@ -3,6 +3,7 @@ import time as time
 
 import numpy as np
 import matplotlib
+import statistics
 
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
@@ -85,6 +86,7 @@ time_callback = TimeHistory()
 history = model.fit(trainData, trainLabels, batch_size=batch_size, nb_epoch=epochs,
                     verbose=1, validation_data=(testData, testLabels), callbacks=[time_callback])
 times_epochs = time_callback.times
+times_epochs_median = statistics.median(times_epochs)
 
 val_accuracy = history.history['val_acc'][-1]
 val_loss = history.history['val_loss'][-1]
@@ -97,9 +99,12 @@ end_time = time.time()
 time_elapsed = end_time - start_time
 print("[INFO] time: {:.2f}".format(time_elapsed))
 
+samples_sec = 60000.0 / times_epochs_median
+
 # | infrastructure | model | script | batch size | gpus | Accuracy (validation) | Epochs | Training time (s/epoch)
 
 file_results = open("./output/results_mxnet.txt", "a")
 file_results.write(str(args["infrastructure"]) + ",lenet," + script + "," + str(batch_size) + "," + str(args["gpu"])
-                   + "," + str(val_accuracy) + "," + str(epochs) + "," + str(times_epochs) + "\n")
+                   + "," + str(val_accuracy) + "," + str(epochs) + "," + str(times_epochs_median)
+                   + "," + str(samples_sec) + "\n")
 file_results.close()

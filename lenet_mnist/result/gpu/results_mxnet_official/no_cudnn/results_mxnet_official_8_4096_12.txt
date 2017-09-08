@@ -1,0 +1,39 @@
+INFO:root:start with arguments Namespace(add_stn=False, batch_size=4096, disp_batches=50, dtype='float32', gpus='0,1,2,3,4,5,6,7', kv_store='device', load_epoch=None, lr=0.05, lr_factor=0.1, lr_step_epochs='10', model_prefix=None, mom=0.9, monitor=0, network='lenet', num_classes=10, num_epochs=12, num_examples=60000, num_layers=None, optimizer='sgd', test_io=0, top_k=0, wd=0.0001)
+[18:48:20] src/operator/././cudnn_algoreg-inl.h:112: Running performance tests to find the best convolution algorithm, this can take a while... (setting env variable MXNET_CUDNN_AUTOTUNE_DEFAULT to 0 to disable)
+INFO:root:Epoch[0] Train-accuracy=0.688818
+INFO:root:Epoch[0] Time cost=0.594
+INFO:root:Epoch[0] Validation-accuracy=0.888753
+INFO:root:Epoch[1] Train-accuracy=0.910775
+INFO:root:Epoch[1] Time cost=0.255
+INFO:root:Epoch[1] Validation-accuracy=0.931478
+INFO:root:Epoch[2] Train-accuracy=0.940934
+INFO:root:Epoch[2] Time cost=0.224
+INFO:root:Epoch[2] Validation-accuracy=0.952718
+INFO:root:Epoch[3] Train-accuracy=0.956608
+INFO:root:Epoch[3] Time cost=0.217
+INFO:root:Epoch[3] Validation-accuracy=0.960449
+INFO:root:Epoch[4] Train-accuracy=0.964225
+INFO:root:Epoch[4] Time cost=0.217
+INFO:root:Epoch[4] Validation-accuracy=0.966064
+INFO:root:Epoch[5] Train-accuracy=0.969092
+INFO:root:Epoch[5] Time cost=0.217
+INFO:root:Epoch[5] Validation-accuracy=0.970215
+INFO:root:Epoch[6] Train-accuracy=0.972835
+INFO:root:Epoch[6] Time cost=0.216
+INFO:root:Epoch[6] Validation-accuracy=0.972982
+INFO:root:Epoch[7] Train-accuracy=0.975374
+INFO:root:Epoch[7] Time cost=0.217
+INFO:root:Epoch[7] Validation-accuracy=0.975260
+INFO:root:Epoch[8] Train-accuracy=0.977523
+INFO:root:Epoch[8] Time cost=0.215
+INFO:root:Epoch[8] Validation-accuracy=0.976888
+INFO:root:Update[147]: Change learning rate to 5.00000e-03
+INFO:root:Epoch[9] Train-accuracy=0.979199
+INFO:root:Epoch[9] Time cost=0.216
+INFO:root:Epoch[9] Validation-accuracy=0.978434
+INFO:root:Epoch[10] Train-accuracy=0.979964
+INFO:root:Epoch[10] Time cost=0.217
+INFO:root:Epoch[10] Validation-accuracy=0.979411
+INFO:root:Epoch[11] Train-accuracy=0.980892
+INFO:root:Epoch[11] Time cost=0.217
+INFO:root:Epoch[11] Validation-accuracy=0.979818

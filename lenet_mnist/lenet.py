@@ -49,10 +49,10 @@ class LeNet:
         model.add(Convolution2D(20, 5, 5, border_mode="same",
                                 input_shape=(depth, height, width)))
         model.add(Activation("tanh"))
-        model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), data_format="th"))
+        model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), dim_ordering="th"))
         model.add(Convolution2D(50, 5, 5, border_mode="same"))
         model.add(Activation("tanh"))
-        model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), data_format="th"))
+        model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), dim_ordering="th"))
         model.add(Flatten())
         model.add(Dense(500))
         model.add(Activation("tanh"))
