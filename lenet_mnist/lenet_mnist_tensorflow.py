@@ -152,7 +152,7 @@ print("[INFO] time: {:.2f}".format(time_elapsed))
 
 samples_sec = 60000.0 / times_epochs_median
 
-file_results = open("./output/results_tensorflow.txt", "a")
+file_results = open("./output/results_tensorflow.csv", "a")
 file_results.write(str(args["infrastructure"]) + ",lenet," + script + "," + str(batch_size) + "," + str(args["gpu"])
                    + "," + str(val_accuracy) + "," + str(epochs) + "," + str(times_epochs_median)
                    + "," + str(samples_sec) + "\n")

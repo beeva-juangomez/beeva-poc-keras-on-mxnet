@@ -103,7 +103,7 @@ samples_sec = 60000.0 / times_epochs_median
 
 # | infrastructure | model | script | batch size | gpus | Accuracy (validation) | Epochs | Training time (s/epoch)
 
-file_results = open("./output/results_mxnet.txt", "a")
+file_results = open("./output/results_mxnet.csv", "a")
 file_results.write(str(args["infrastructure"]) + ",lenet," + script + "," + str(batch_size) + "," + str(args["gpu"])
                    + "," + str(val_accuracy) + "," + str(epochs) + "," + str(times_epochs_median)
                    + "," + str(samples_sec) + "\n")
