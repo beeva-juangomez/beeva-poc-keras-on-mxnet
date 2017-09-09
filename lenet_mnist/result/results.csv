@@ -1,3 +1,4 @@
+infrastructure,model,script,batch_size,gpus,accuracy,epochs,time,samples_sec
 0,lenet,keras_mxnet_lenet,64,0,0.991633506785,12,255.7,235.0
 0,lenet,keras_mxnet_lenet,128,0,0.988674624984,12,263.2,228.0
 0,lenet,keras_mxnet_lenet,256,0,0.987552290528,12,232.4,258.0
