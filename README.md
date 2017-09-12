@@ -10,7 +10,6 @@
 7. [Hardware](#hardware)
 8. [Result](#result)
   1. [CNN LeNet MNIST](#result_lenet)
-  2. [RNN IMDB reviews](#result_rnn_imdb)
 9. [Conclusion](#conclusion)
 
 ### Topic <a name="topic"></a>
@@ -232,23 +231,24 @@ The final results have been moved to 'result' folder where you can find 'cpu', '
 
 #### CNN LeNet MNIST  <a name="result_lenet"></a>
 
-- **CPU:** It is possible to execute the whole script. However, the time needed to complete the executions is very high.
+With MXNet and cuDNN enabled:
 
-![alt tag](assets/lenet_cpu.png)
+- x3.25 throughput with 4 GPUs over 1 GPU
+- x5 throughput with 8 GPUs over 1 GPU
 
-- **GPU:** The time needed to complete the script decrease critically. 
+With the official MXNet sample we have different results:
 
-![alt tag](assets/lenet_gpu.png)
-
-- **Multi-GPU:** Using 8 GPUs NVDIA K80 is very expensive and the main difference with just one GPU is the execution time with high batch size. The more batch size you choose, the less time you need.
-
-![alt tag](assets/lenet_multigpu.png)
-
-
-- **Multi-GPU:** As you can see, the multi-GPU execution is very similar to GPU. The parallelization have sense if the amount of epochs is very high.
-
-![alt tag](assets/rnn_multigpu.png)
+- x3.68 throughput with 4 GPUs over 1 GPU
+- x6.7 throughput with 8 GPUs over 1 GPU
 
 ### Conclusion <a name="conclusion"></a>
 
-Nowadays, Keras is not ready to support MXNet for professional development. This has nothing to do with the performance. The models run perfectly and is completely functional, but the current solution (forked repository) is not enough to long-term development because you will not enjoy the fixes and new features added in next Keras versions, you have to stick in 1.2.2 if you want to use Keras on MXNet.
+- Nowadays, Keras is not ready to support MXNet for professional development
+- A forked repository is not enough to long-term development
+- You have to stick in 1.2.2 if you want to use Keras on MXNet
+- Tensorflow is trendy right now but there are alternatives showing better performance
+- mxnet-cu80, mxnet-cu75… have CUDA and cuDNN flags enabled. Install this versions if you are going to execute in multi-GPU environment
+- With MXNet is complicated to know if cuDNN is executing
+- cuDNN is worth it when you have a big network
+- MXNet shows better performance than Tensorflow (5-10%)
+- Tensorflow can not execute without cuDNN. It is a must to implement a “make_parallel” function (available on GitHub) to execute Tensorflow in multi-GPU
